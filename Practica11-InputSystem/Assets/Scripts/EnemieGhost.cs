@@ -6,6 +6,7 @@ public class EnemieGhost : MonoBehaviour
 {
     public Transform player;
     Animator animEn;
+    public GameObject attackCollider;
     public float velocidad;
     public float distance;
     bool ping;
@@ -54,10 +55,11 @@ public class EnemieGhost : MonoBehaviour
         
 
         distance = Vector3.Distance(player.position, transform.position);
-        if(distance<3)
+        if(distance<1)
         {
             isDetected = true;
             animEn.SetTrigger("isAttack");
+
             transform.rotation= Quaternion.Euler(transform.rotation.x, player.transform.rotation.y,transform.rotation.z);
         }
         else
@@ -65,5 +67,22 @@ public class EnemieGhost : MonoBehaviour
             isDetected = false;
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Power1"))
+        {
+            animEn.SetTrigger("isDamage");
+        }
+    }
+
+    public void AttackActive()
+    {
+        attackCollider.SetActive(true);
+    }
+    public void AttackDiseable()
+    {
+        attackCollider.SetActive(false);
     }
 }

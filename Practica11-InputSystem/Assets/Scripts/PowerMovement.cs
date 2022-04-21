@@ -15,7 +15,7 @@ Animator anim;
     
     void Update()
     {
-        transform.Translate(Vector2.left * velocidad * Time.deltaTime);
+        transform.Translate(Vector2.right * velocidad * Time.deltaTime);
     }
 
     

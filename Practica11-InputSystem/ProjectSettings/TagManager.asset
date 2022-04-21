@@ -10,6 +10,7 @@ TagManager:
   - DeadEmpty
   - Power1
   - Enemiw
+  - DamageEnemy
   layers:
   - Default
   - TransparentFX
